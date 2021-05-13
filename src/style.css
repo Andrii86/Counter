@@ -1,0 +1,8 @@
+body {
+    transition: .2s all ease-in;
+}
+.heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
