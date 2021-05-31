@@ -1,17 +1,17 @@
-export function createStore() {
-    const state = {}
-
+export function createStore(rootReducer, initialState) {
+    let state = rootReducer(initialState, {type: '__INIT__'})
+    const subscribers = []
 
     return {
-        dispatch() {
-
+        dispatch(action) {
+            state = rootReducer(state, action)
+            subscribers.forEach(sub => sub())
         },
-        subscribe() {
-
+        subscribe(callback) {
+            subscribers.push(callback)
         },
         getState() {
-    return this.state.
+            return state
         }
-
-}
+    }
 }
